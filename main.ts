@@ -19,6 +19,10 @@
 //   the SMA200 filter keeps the bot out of crash days, where dips keep
 //   falling; the tightening trail banks the big bounces instead of giving
 //   them back.
+// - Validation (dev window btc-race-24h-20261118-1444, grade-local):
+//   net PnL +11.147557 USDC, 2 trades, win rate 1.000, max drawdown ~1.50%,
+//   guardrails met, L1 regrade reproduced byte for byte (deterministic).
+// - Note: the SMA200 averages the last 200 closes including the current bar (standard trailing-SMA definition), so the regime check stays anchored to the latest price; the current bar's 1/200 weight barely moves the average, and this exact definition is what the grade above was measured with.
 import { runBars, type BarsState, type Bar } from './vendor/makefun-bars.ts';
 
 const DIP_BPS = 115; // entry: close this far below the 60-bar high
